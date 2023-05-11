@@ -16,6 +16,7 @@ public class UsuarioDTO implements Serializable{
 	@NotEmpty(message = "Preenchimento Obrigatório de e-mail")
 	private String email;
 	
+	// padrao dd/MM/yyyy
 	@NotEmpty(message = "Preenchimento Obrigatório da dataNascimento")
 	private String dataNascimento;
 	

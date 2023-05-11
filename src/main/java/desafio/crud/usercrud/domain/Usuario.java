@@ -25,6 +25,14 @@ public class Usuario implements Serializable{
 	private String endereco;
 	
 	private List<String> habilidades;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getNome() {
 		return nome;

@@ -1,5 +1,7 @@
 package desafio.crud.usercrud.controller;
 
+import java.text.ParseException;
+
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,7 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioDTO objDto) {
+    public ResponseEntity<Void> insert(@Valid @RequestBody UsuarioDTO objDto) throws ParseException {
 		Usuario userValidado = service.validaUsuario(objDto);
 		userValidado = service.inserir(userValidado);
         return ResponseEntity.noContent().build();
