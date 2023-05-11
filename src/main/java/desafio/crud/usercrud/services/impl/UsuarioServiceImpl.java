@@ -38,7 +38,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public Usuario inserir(Usuario obj) {
 		obj.setId(null);
 		obj = repository.save(obj);
-		return null;
+		return obj;
 	}
 
 	private void validaNome(String nome) {
