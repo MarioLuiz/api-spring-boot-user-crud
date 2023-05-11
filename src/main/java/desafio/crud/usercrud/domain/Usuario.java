@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = -8239653640113923006L;
@@ -24,6 +28,8 @@ public class Usuario implements Serializable{
 	
 	private String endereco;
 	
+	@ElementCollection
+	@CollectionTable(name = "habilidades")
 	private List<String> habilidades;
 	
 	public Long getId() {

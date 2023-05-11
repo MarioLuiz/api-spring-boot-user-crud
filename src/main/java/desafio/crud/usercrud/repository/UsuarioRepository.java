@@ -7,6 +7,5 @@ import desafio.crud.usercrud.domain.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
-    
 
 }
