@@ -49,11 +49,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	private void validaEmail(String email) {
-		String patternEmailValido = "^(.+)@(.+)$";
 		String patternProvedoresValidos = "/@gmail.com|@hotmail.com|@outlook.com|@yahoo.com/i";
-		if (!email.matches(patternEmailValido) && !email.matches(patternProvedoresValidos)) {
+		if (!email.matches(patternProvedoresValidos)) {
 			throw new CustomValidationException(
-					"Digite um email valido e de um desses provedores (Gmail, Hotmail, Outlook e Yahoo)");
+					"Digite de um desses provedores (Gmail, Hotmail, Outlook e Yahoo)");
 		}
 	}
 

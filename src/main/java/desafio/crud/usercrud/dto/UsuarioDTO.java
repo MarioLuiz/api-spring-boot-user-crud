@@ -3,6 +3,7 @@ package desafio.crud.usercrud.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -14,6 +15,7 @@ public class UsuarioDTO implements Serializable{
 	private  String nome;
 	
 	@NotEmpty(message = "Preenchimento Obrigatório de e-mail")
+	@Email(message = "E-mail valido obrigatório")
 	private String email;
 	
 	// padrao dd/MM/yyyy
