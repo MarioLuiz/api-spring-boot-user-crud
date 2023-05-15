@@ -4,7 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,11 +18,13 @@ import desafio.crud.usercrud.repository.UsuarioRepository;
 import desafio.crud.usercrud.services.UsuarioService;
 import desafio.crud.usercrud.services.exceptions.CustomValidationException;
 
+@Qualifier("user")
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 	
 	private UsuarioRepository repository;
 	
+	@Autowired
 	public UsuarioServiceImpl(UsuarioRepository repository) {
 		this.repository = repository;
 	}
@@ -49,8 +55,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	private void validaEmail(String email) {
-		String patternProvedoresValidos = "/@gmail.com|@hotmail.com|@outlook.com|@yahoo.com/i";
-		if (!email.matches(patternProvedoresValidos)) {
+		Pattern patternProvedoresValidos = Pattern.compile("@gmail.com|@hotmail.com|@outlook.com|@yahoo.com");
+		Matcher matcher = patternProvedoresValidos.matcher(email);
+		if (!matcher.find()) {
 			throw new CustomValidationException(
 					"Digite de um desses provedores (Gmail, Hotmail, Outlook e Yahoo)");
 		}
